@@ -1,0 +1,11 @@
+
+.idea/evenTUMBackEnd.iml
+.idea/jsLibraryMappings.xml
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+WiredTiger.turtle
+config/config.js
+diagnostic.data/
+journal/
+node_modules/
