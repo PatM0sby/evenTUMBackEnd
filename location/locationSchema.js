@@ -11,10 +11,10 @@ var Location   = new mongoose.Schema({
     address: String,
     capacity: Number,
     price: Number,
-    user: {
+    /*user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }
+    }*/
 });
 
 // Export the Mongoose model

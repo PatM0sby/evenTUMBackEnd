@@ -33,14 +33,14 @@ app.use(bodyParser.urlencoded({
 
 
 //passport
-
+/*
 var passport = require('passport');
 var jwtConfig = require('./passport/jwtConfig');
 
 app.use(passport.initialize());
 jwtConfig(passport);
 
-
+*(
 /**
  * routing
  */
@@ -49,9 +49,10 @@ var userRoutes = require("./user/userRoutes");
 var movieRoutes = require("./movie/movieRoutes");
 var locationRoutes = require("./location/locationRoutes");
 
-app.use('/api', movieRoutes(passport));
-app.use('/', userRoutes(passport));
-app.use('/api', locationRoutes(passport));
 
+//app.use('/api', movieRoutes(/*passport*/));
+//app.use('/', userRoutes(/*passport*/));
+app.use('/api', locationRoutes(/*passport*/));
+/*app.use('/api/location', locationRoutes);*/
 
 module.exports = app;

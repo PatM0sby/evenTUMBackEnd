@@ -6,6 +6,7 @@ var app = require('./app');
   */
 
 app.listen(Config.app.port);
+console.log("Server gestartet on localhost:3000");
 
 
 
