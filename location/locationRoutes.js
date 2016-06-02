@@ -14,7 +14,7 @@ function locationRoutes(passport) {
     mw.unless = unless;
 
     //middleware
-    router.use(mw.unless({method: ['GET', 'OPTIONS']}));
+    //router.use(mw.unless({method: ['GET', 'OPTIONS']}));
 
     router.route('/locations')
         .post(locationController.postLocation)
@@ -22,9 +22,9 @@ function locationRoutes(passport) {
 
     router.route('/locations/:location_id')
         .get(locationController.getLocation)
-    //TO-DO make 'em work!
-        //.put(locationController.putLocation())
-        //.delete(locationController.deleteLocation());
+
+        .put(locationController.putLocation)
+        .delete(locationController.deleteLocation);
 
     return router;
 }

@@ -43,7 +43,7 @@ exports.getLocation = function(req, res) {
         res.json(location);
     });
 };
-/* TO-DO Fix Errors
+
 //Create endpoint /api/movies/:movie_id for PUT
 exports.putLocation = function(req, res) {
     // Use the Beer model to find a specific beer
@@ -74,12 +74,11 @@ exports.deleteLocation = function(req, res) {
             return;
         }
         //authorize
-        if (m.user && req.user.equals(m.user)) {
+        /*if (m.user && req.user.equals(m.user)) {
             m.remove();
             res.sendStatus(200);
         } else {
             res.sendStatus(401);
-        }
-
+        }*/
     });
-};*/
+};
