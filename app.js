@@ -48,11 +48,12 @@ jwtConfig(passport);
 var userRoutes = require("./user/userRoutes");
 var movieRoutes = require("./movie/movieRoutes");
 var locationRoutes = require("./location/locationRoutes");
+var catererRoutes = require("./caterer/catererRoutes");
 
 
 //app.use('/api', movieRoutes(/*passport*/));
 //app.use('/', userRoutes(/*passport*/));
 app.use('/api', locationRoutes(/*passport*/));
 /*app.use('/api/location', locationRoutes);*/
-
+app.use('/api', catererRoutes());
 module.exports = app;

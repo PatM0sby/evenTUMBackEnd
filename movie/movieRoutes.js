@@ -20,7 +20,7 @@ function movieRoutes(passport) {
     router.route('/movies/:movie_id')
         .get(movieController.getMovie)
         .put(movieController.putMovie)
-        .delete(movieController.deleteMovie);
+        .delete(movieController.deleteCaterer);
 
     return router;
 }
