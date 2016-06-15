@@ -1,7 +1,6 @@
 var Location = require('./locationSchema');
 
 exports.postLocation = function(req, res) {
-    console.log("Zeile 11");
     var location = new Location(req.body);
 
     /*///do not allow user to fake identity. The user who postet the movie must be the same user that is logged in

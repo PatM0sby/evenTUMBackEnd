@@ -8,7 +8,7 @@
 var mongoose = require('mongoose');
 
 // Define our movie schema
-var Invite   = new mongoose.Schema({
+var Invitation   = new mongoose.Schema({
     name: String,
     description: String,
     address: String,
@@ -24,4 +24,4 @@ var Invite   = new mongoose.Schema({
 });
 
 // Export the Mongoose model
-module.exports = mongoose.model('Invitation', Invite);
+module.exports = mongoose.model('Invitation', Invitation);
