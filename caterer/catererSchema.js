@@ -8,7 +8,12 @@ var Caterer   = new mongoose.Schema({
     pricePerPerson: Number,
     kitchen: String,
     selection: String,
-    vein: String
+    vein: String,
+    picture: String,
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 // Export the Mongoose model

@@ -49,11 +49,12 @@ var userRoutes = require("./user/userRoutes");
 var movieRoutes = require("./movie/movieRoutes");
 var locationRoutes = require("./location/locationRoutes");
 var catererRoutes = require("./caterer/catererRoutes");
-
+var inviteRoutes = require("./invite/inviteRoutes");
 
 //app.use('/api', movieRoutes(/*passport*/));
 //app.use('/', userRoutes(/*passport*/));
 app.use('/api', locationRoutes(/*passport*/));
 /*app.use('/api/location', locationRoutes);*/
+app.use('/api', inviteRoutes());
 app.use('/api', catererRoutes());
 module.exports = app;

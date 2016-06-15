@@ -22,7 +22,6 @@ function locationRoutes(/*passport*/) {
 
     router.route('/locations/:location_id')
         .get(locationController.getLocation)
-
         .put(locationController.putLocation)
         .delete(locationController.deleteLocation);
 
