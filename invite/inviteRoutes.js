@@ -17,11 +17,11 @@ function inviteRoutes(/*passport*/) {
     //middleware
     //router.use(mw.unless({method: ['GET', 'OPTIONS']}));
 
-    router.route('/invites')
+    router.route('/invitations')
         .post(inviteController.postInvite)
         .get(inviteController.getInvites);
 
-    router.route('/invites/:invite_id')
+    router.route('/invitations/:invite_id')
         .get(inviteController.getInvite)
         .put(inviteController.putInvite)
         .delete(inviteController.deleteInvite);
