@@ -78,6 +78,8 @@ exports.deleteInvitation = function(req, res) {
             res.status(500).send(err);
             return;
         }
+        m.remove();
+        res.sendStatus(200);
         //authorize/
         /*if (m.user && req.user.equals(m.user)) {
             m.remove();
