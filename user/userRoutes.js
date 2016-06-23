@@ -1,5 +1,3 @@
-module.exports = userRoutes;
-
 function userRoutes(passport) {
 
     var userController = require('./userController');
@@ -13,3 +11,5 @@ function userRoutes(passport) {
     return router;
 
 }
+
+module.exports = userRoutes;

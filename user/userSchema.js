@@ -13,30 +13,30 @@ var userSchema = mongoose.Schema({
     }
 });
 
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function(callback) {
     var user = this;
 
     // only hash the password if it has been modified (or is new)
-    if (!user.isModified('password')) return next();
+    if (!user.isModified('password')) return callback();
 
     bcrypt.genSalt(10, function(err, salt) {
-        if (err) return next(err);
+        if (err) return callback(err);
 
         // hash the password using our new salt
         bcrypt.hash(user.password, salt, null, function (err, hash) {
-            if (err) return next(err);
+            if (err) return callback(err);
 
             // override the cleartext password with the hashed one
             user.password = hash;
-            next();
+            callback();
         });
     });
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
+userSchema.methods.comparePassword = function(candidatePassword, callback) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-        if (err) return cb(err);
-        cb(null, isMatch);
+        if (err) return callback(err);
+        callback(null, isMatch);
     });
 };
 

@@ -3,7 +3,6 @@ var User = require('./userSchema');
 var jwt = require('jwt-simple');
 
 module.exports.login = function(req, res){
-
     if(!req.body.username){
         res.status(400).send('username required');
         return;
@@ -52,7 +51,7 @@ module.exports.signup = function(req, res){
     user.save(function(err) {
         if (err) {
             res.status(500).send(err);
-            return;
+            return; //early exit
         }
 
         res.status(201).json({token: createToken(user)});
@@ -60,7 +59,7 @@ module.exports.signup = function(req, res){
 };
 
 module.exports.unregister = function(req, res) {
-    req.user.remove().then(function (user) {
+    req.user.remove().then(function () {
         res.sendStatus(200);
     }, function(err){
         res.status(500).send(err);

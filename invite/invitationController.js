@@ -15,7 +15,6 @@ exports.postInvitation = function(req, res) {
 
     invitation.save(function(err, m) {
         if (err) {
-            
             res.status(500).send(err);
             return;
         }
