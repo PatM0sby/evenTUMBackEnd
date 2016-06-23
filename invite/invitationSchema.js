@@ -1,9 +1,4 @@
-/**
- * Created by Pat on 15.06.2016.
- */
-/**
- * Created by Pat on 01.06.2016.
- */
+
 // Load required packages
 var mongoose = require('mongoose');
 
@@ -11,7 +6,6 @@ var mongoose = require('mongoose');
 var Invitation   = new mongoose.Schema({
     name: String,
     description: String,
-    address: String,
     pricePerPerson: Number,
     salutation: String,
     text: String,
