@@ -12,8 +12,8 @@ var Location   = new mongoose.Schema({
     capacity: Number,
     price: Number,
     picture: String,
-    latitude: String,
-    longitude: String,
+    latitude: Number,
+    longitude: Number,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

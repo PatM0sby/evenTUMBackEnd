@@ -75,8 +75,9 @@ exports.deleteCaterer = function(req, res) {
             return;
         }
         //authorize
-
+        
          m.remove();
+        console.log('removed: '+ m._id);
          res.sendStatus(200);
         /*
         if (m.user && req.user.equals(m.user)) {
