@@ -45,7 +45,7 @@ var userRoutes = require("./user/userRoutes");
 var locationRoutes = require("./location/locationRoutes");
 var catererRoutes = require("./caterer/catererRoutes");
 var invitationRoutes = require("./invite/invitationRoutes");
-var geo=require("./geo/geo");
+
 
 //app.use('/api', movieRoutes(/*passport*/));
 app.use('/', userRoutes(passport));
