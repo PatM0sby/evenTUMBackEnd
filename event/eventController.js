@@ -76,8 +76,9 @@ exports.deleteEvent = function(req, res) {
             res.status(500).send(err);
             return;
         }
+        console.log("deleted: " + m.name);
         m.remove()
-
+        
             .then(function (m) {
                 Event.find(function(err, events) {
                     if (err) {
@@ -86,16 +87,17 @@ exports.deleteEvent = function(req, res) {
                     }
 
                     events = events.splice(events.indexOf(m), 1);
-
+                    
                     res.json(events);
+                    console.log(events.toString());
                 });
             });
 
-        console.log("deleted: " + m.name);
+        
 
     });
 
-
+    //step2: return remaining events (intended as far as i can remember)
 
 };
 
