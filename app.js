@@ -45,12 +45,15 @@ var userRoutes = require("./user/userRoutes");
 var locationRoutes = require("./location/locationRoutes");
 var catererRoutes = require("./caterer/catererRoutes");
 var invitationRoutes = require("./invite/invitationRoutes");
+var eventRoutes = require("./event/eventRoutes");
 
 
 //app.use('/api', movieRoutes(/*passport*/));
 app.use('/', userRoutes(passport));
 app.use('/api', locationRoutes(/*passport*/));
 /*app.use('/api/location', locationRoutes);*/
-app.use('/api', invitationRoutes());
 app.use('/api', catererRoutes());
+app.use('/api', invitationRoutes());
+app.use('/api', eventRoutes());
+
 module.exports = app;

@@ -4,11 +4,11 @@ exports.postCaterer = function(req, res) {
 
     var caterer = new Caterer(req.body);
 
-    /*
+    
     //do not allow user to fake identity. The user who posted the movie must be the same user that is logged in
     if (!req.user.equals(movie.user)) {
         res.sendStatus(401);
-    } */
+    } 
 
     caterer.save(function(err, m) {
         if (err) {
