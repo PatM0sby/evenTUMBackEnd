@@ -29,7 +29,6 @@ exports.getEvents = function(req, res) {
                 res.status(500).send(err);
                 return;
             }
-            console.log(events[0].token, '\n', req.headers.authorization);
             res.json(events);
         });
 };
@@ -85,11 +84,7 @@ exports.deleteEvent = function(req, res) {
                         return;
                     }
 
-                    console.log(events);
-
                     events = events.splice(events.indexOf(event), 1);
-
-                    console.log(events);
 
                     res.json(events);
                 });
