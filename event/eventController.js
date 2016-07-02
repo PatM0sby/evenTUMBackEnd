@@ -22,13 +22,16 @@ exports.postEvent = function(req, res) {
 
 // Create endpoint /api/movies for GET
 exports.getEvents = function(req, res) {
-    Event.find(function(err, events) {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        }
-        res.json(events);
-    });
+
+    Event.find({token: req.headers.authorization.split('JWT ')[1]})
+        .find(function(err, events) {
+            if (err) {
+                res.status(500).send(err);
+                return;
+            }
+            console.log(events[0].token, '\n', req.headers.authorization);
+            res.json(events);
+        });
 };
 
 
@@ -74,19 +77,30 @@ exports.deleteEvent = function(req, res) {
             res.status(500).send(err);
             return;
         }
-        m.remove();
+        m.remove()
+            .then(function (event) {
+                Event.find(function(err, events) {
+                    if (err) {
+                        res.status(500).send(err);
+                        return;
+                    }
+
+                    console.log(events);
+
+                    events = events.splice(events.indexOf(event), 1);
+
+                    console.log(events);
+
+                    res.json(events);
+                });
+            });
+
         console.log("deleted: " + m.name);
 
     });
 
     //step2: return remaining events (intended as far as i can remember)
-    Event.find(function(err, events) {
-        if (err) {
-            res.status(500).send(err);
-            return;
-        }
-        res.json(events);
-    });
-}
+
+};
 
 
