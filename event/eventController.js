@@ -77,14 +77,15 @@ exports.deleteEvent = function(req, res) {
             return;
         }
         m.remove()
-            .then(function (event) {
+
+            .then(function (m) {
                 Event.find(function(err, events) {
                     if (err) {
                         res.status(500).send(err);
                         return;
                     }
 
-                    events = events.splice(events.indexOf(event), 1);
+                    events = events.splice(events.indexOf(m), 1);
 
                     res.json(events);
                 });
@@ -94,7 +95,7 @@ exports.deleteEvent = function(req, res) {
 
     });
 
-    //step2: return remaining events (intended as far as i can remember)
+
 
 };
 
