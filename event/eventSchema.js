@@ -12,7 +12,11 @@ var Event   = new mongoose.Schema({
     token: String,
 
     invitation: {
-        template: String,
+        settings: {
+            template: String,
+            salutation: String,
+            message: String
+        },
         invitees: Array
     },
 
