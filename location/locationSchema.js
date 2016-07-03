@@ -1,16 +1,14 @@
-/**
- * Created by Pat on 01.06.2016.
- */
 // Load required packages
 var mongoose = require('mongoose');
 
 // Define our movie schema
 var Location   = new mongoose.Schema({
     name: String,
-    description: String,
     address: String,
-    capacity: Number,
+    description: String,
     price: Number,
+    priceType: String,
+    capacity: Number,
     picture: String,
     latitude: Number,
     longitude: Number,

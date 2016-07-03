@@ -66,20 +66,24 @@ exports.putLocation = function(req, res) {
 
 // Create endpoint /api/movies/:movie_id for DELETE
 exports.deleteLocation = function(req, res) {
-    // Use the Beer model to find a specific beer and remove it
-    Location.findById(req.params.location_id, function(err, m) {
+
+    Location.findById(req.params.location_id, function (err, location) {
         if (err) {
-            res.status(500).send(err);
+            res.status(206).send(err);
             return;
         }
-        m.remove();
-        res.sendStatus(200);
-        //authorize
-        /*if (m.user && req.user.equals(m.user)) {
-            m.remove();
-            res.sendStatus(200);
-        } else {
-            res.sendStatus(401);
-        }*/
+
+        location.remove()
+            .then(function () {
+                res.status(200).json(location);
+
+                console.log("deleted: " + location.name);
+            })
+            .catch(function (e) {
+                res.status(206).json({
+                    message: 'Object could not be removed!',
+                    error: e
+                });
+            });
     });
 };

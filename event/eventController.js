@@ -62,17 +62,18 @@ exports.putEvent = function(req, res) {
 };
 
 exports.deleteEvent = function(req, res) {
+
     Event.findById(req.params.event_id, function (err, event) {
         if (err) {
             res.status(206).send(err);
             return;
         }
 
-        console.log("deleted: " + event.name);
-
         event.remove()
             .then(function () {
                 res.status(200).json(event);
+
+                console.log("deleted: " + event.name);
             })
             .catch(function (e) {
                 res.status(206).json({

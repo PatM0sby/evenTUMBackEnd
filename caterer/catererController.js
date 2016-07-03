@@ -68,24 +68,22 @@ exports.putCaterer = function(req, res) {
 
 // Create endpoint /api/movies/:movie_id for DELETE
 exports.deleteCaterer = function(req, res) {
-    // Use the Beer model to find a specific beer and remove it
-    Caterer.findById(req.params.caterer_id, function(err, m) {
+
+    Caterer.findById(req.params.caterer_id, function (err, caterer) {
         if (err) {
-            res.status(500).send(err);
+            res.status(206).send(err);
             return;
         }
-        //authorize
-        
-         m.remove();
-        console.log('removed: '+ m._id);
-         res.sendStatus(200);
-        /*
-        if (m.user && req.user.equals(m.user)) {
-            m.remove();
-            res.sendStatus(200);
-        } else {
-            res.sendStatus(401);
-        }
-        */
+
+        caterer.remove()
+            .then(function () {
+                res.status(200).json(caterer);
+
+                console.log('removed: '+ caterer._id);
+                console.log(typeof caterer);
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
     });
 };

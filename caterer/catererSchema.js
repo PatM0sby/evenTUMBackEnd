@@ -4,12 +4,13 @@ var mongoose = require('mongoose');
 // Define our movie schema
 var Caterer   = new mongoose.Schema({
     name: String,
+    address: String,
     description: String,
-    pricePerPerson: Number,
+    price: Number,
+    priceType: String,
     kitchen: String,
     selection: String,
     vein: String,
-    picture: String,
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

@@ -1,6 +1,3 @@
-/**
- * Created by Pat on 15.06.2016.
- */
 var Invitation = require('./invitationSchema');
 
 exports.postInvitation = function(req, res) {
@@ -23,7 +20,6 @@ exports.postInvitation = function(req, res) {
     });
 };
 
-// Create endpoint /api/movies for GET
 exports.getInvitations = function(req, res) {
     Invitation.find(function(err, invitations) {
         if (err) {
@@ -35,7 +31,7 @@ exports.getInvitations = function(req, res) {
 };
 
 
-// Create endpoint /api/movies/:movie_id for GET
+
 exports.getInvitation = function(req, res) {
     // Use the Beer model to find a specific beer
     Invitation.findById(req.params.invitation_id, function(err, invitation) {
@@ -48,7 +44,6 @@ exports.getInvitation = function(req, res) {
     });
 };
 
-// Create endpoint /api/movies/:movie_id for PUT
 exports.putInvitation = function(req, res) {
     // Use the Beer model to find a specific beer
     Invitation.findByIdAndUpdate(
@@ -69,23 +64,24 @@ exports.putInvitation = function(req, res) {
 
 };
 
-// Create endpoint /api/movies/:movie_id for DELETE
 exports.deleteInvitation = function(req, res) {
-    // Use the Beer model to find a specific beer and remove it
-    Invitation.findById(req.params.invitation_id, function(err, m) {
+    Invitation.findById(req.params.invitation_id, function(err, inv) {
         if (err) {
-            res.status(500).send(err);
+            res.status(206).send(err);
             return;
         }
-        m.remove();
-        res.sendStatus(200);
-        //authorize/
-        /*if (m.user && req.user.equals(m.user)) {
-            m.remove();
-            res.sendStatus(200);
-        } else {
-            res.sendStatus(401);
-        }*/
 
+        inv.remove()
+            .then(function () {
+                res.status(200).json(inv);
+
+                console.log("deleted: " + inv.name);
+            })
+            .catch(function (e) {
+                res.status(206).json({
+                    message: 'Object could not be removed!',
+                    error: e
+                });
+            });
     });
 };
