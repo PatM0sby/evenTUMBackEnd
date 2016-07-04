@@ -6,6 +6,8 @@ var mongoose = require('mongoose');
 var Invitation   = new mongoose.Schema({
     name: String,
     description: String,
+    price: Number,
+    priceType: String,
     salutation: String,
     text: String,
     greeting: String,
